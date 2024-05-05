@@ -1,7 +1,7 @@
 # encodingtools
 
 # Use archlinux:base-devel for our base build image
-FROM archlinux:base-devel as build
+FROM ghcr.io/archlinux/archlinux:base-devel as build
 
 # Update
 RUN pacman -Syu --noconfirm
@@ -44,7 +44,7 @@ RUN MAKEFLAGS="-j$(nproc)" \
     rm -f *debug*.pkg.tar.zst
 
 # Use archlinux for our base runtime image
-FROM archlinux:latest as runtime
+FROM ghcr.io/archlinux/archlinux:latest as runtime
 
 # Set the working directory to /app
 WORKDIR /app
