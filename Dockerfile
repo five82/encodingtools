@@ -58,6 +58,7 @@ COPY --from=build /home/builder/ffmpeg-git/*.pkg.tar.zst .
 RUN pacman -Syu --noconfirm && \
 # Install runtime packages
     pacman -Sy --noconfirm \
+        libdovi \
         libopusenc && \
 # Install AUR packages
     pacman -U --noconfirm \
