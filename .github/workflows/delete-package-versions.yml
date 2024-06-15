@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Delete package versions
-        uses: actions/delete-package-versions@v2
+        uses: actions/delete-package-versions@v5
         with:
           package-name: 'encodingtools'
           package-type: 'container'
