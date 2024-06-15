@@ -1,0 +1,24 @@
+name: Delete Package Versions
+
+on:
+  schedule:
+      - cron: "0 23 * * 1" # Run every Monday at 23:00 UTC
+  push:
+    branches:
+      - main
+
+jobs:
+  delete-package-versions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Delete package versions
+        uses: actions/delete-package-versions@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          package-name: encodingtools
+          package-type: container
+          min-versions-to-keep: 10
