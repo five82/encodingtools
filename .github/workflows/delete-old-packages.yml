@@ -1,0 +1,14 @@
+delete-old-packages:
+  needs: build
+  runs-on: ubuntu-latest
+  schedule:
+    - cron: "0 23 * * 1" # Run every Monday at 23:00 UTC
+  steps:
+    - name: Delete old packages
+      uses: einaregilsson/delete-old-packages@v1
+      with:
+        owner: ${{ github.repository_owner }}
+        repo: ${{ github.event.repository.name }}
+        package_type: container
+        num_to_keep: 15
+        token: ${{ secrets.GITHUB_TOKEN }}
