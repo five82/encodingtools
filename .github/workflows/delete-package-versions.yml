@@ -12,12 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: Delete package versions
         uses: actions/delete-package-versions@v5
         with:
           package-name: 'encodingtools'
           package-type: 'container'
           min-versions-to-keep: 10
+          token: ${{ secrets.GITHUB_TOKEN }}
